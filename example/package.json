@@ -4,7 +4,8 @@
 	"main": "index.js",
 	"license": "MIT",
 	"dependencies": {
-		"factoryjs": "link:.."
+		"factoryjs": "link:..",
+		"factri": "^1.0.1"
 	},
-  "type": "module"
+	"type": "module"
 }
