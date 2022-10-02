@@ -7,8 +7,18 @@ const Human = factory((t, { name = 'Human' }) => {
 	t.sayName = () => console.log('My name is', name)
 })
 
+const h1 = Human()
+const h2 = Human()
+
+// console.table(h1)
+
+console.log(h1 === h2)
+
 const Man = extend((t) => {
+	console.table(t)
 	t.work = () => console.log('working')
+
+	console.log(t)
 }, Human)
 
 const man = Man({ name: 'Keval' })
