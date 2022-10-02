@@ -22,7 +22,7 @@ const merge = (target, ...sources) => {
 	return merge(target, ...sources)
 }
 
-export const factory = (cb: any, { freeze = false } = {}) => {
+export const factory = (cb: any, { freeze = true } = {}) => {
 	return (args?: any) => {
 		const t = {}
 		cb(t, args ?? {})
