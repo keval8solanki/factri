@@ -6,7 +6,7 @@
   version "0.0.0"
   uid ""
 
-factri@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/factri/-/factri-1.0.1.tgz#9e1eb20f08c468e119da8ce7feefc37592b0ad82"
-  integrity sha512-Aath3Z5CdCbQp/i7jEkW6CV2n3wmqBlXboukDDaVZ+fBJqGEEKMQYFy4z1qapVRWMDKzY7PpjaJ3qhhlHdybQA==
+factri@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/factri/-/factri-1.0.2.tgz#1e69db0306ea1e94ecdef46ef4a452a77bf7a13d"
+  integrity sha512-IjTWBYo+Uy/sPmgXMsjDOWEGXEyvqWDnSU3v+pmPeR1S0BfMjHpNlAwzHtTPWapzyDdx4+0tSPudRIHjFyeh6Q==

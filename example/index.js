@@ -1,4 +1,4 @@
-import f from '../dist/index.cjs.js'
+import f from 'factri'
 const { extend, factory } = f
 console.log(f)
 const Human = factory((t, { name = 'Human' }) => {
@@ -8,9 +8,7 @@ const Human = factory((t, { name = 'Human' }) => {
 })
 
 const Man = extend((t) => {
-    t.work = () => console.log('working')
-    
-    
+	t.work = () => console.log('working')
 }, Human)
 
 const man = Man({ name: 'Keval' })
