@@ -1,5 +1,5 @@
 const { dependencies } = require('./package.json')
-const entryFile = 'src/index.tsx'
+const entryFile = 'src/index.ts'
 exports.shared = {
 	bundle: true,
 	entryPoints: [entryFile],

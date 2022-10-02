@@ -4,8 +4,8 @@ const { shared } = require('./esbuild.config')
 let count = 1
 build({
 	...shared,
-	format: 'esm',
-	outfile: './dist/index.esm.js',
+	format: 'cjs',
+	outfile: './dist/index.cjs.js',
 	target: ['esnext', 'node12.22.0'],
 	watch: {
 		onRebuild(error, result) {

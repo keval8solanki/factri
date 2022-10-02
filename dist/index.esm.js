@@ -1,0 +1,2 @@
+var t=n=>n&&typeof n=="object"&&!Array.isArray(n),o=(n,...y)=>{if(!y.length)return n;let e=y.shift();if(t(n)&&t(e))for(let c in e)t(e[c])?(n[c]||Object.assign(n,{[c]:{}}),o(n[c],e[c])):Object.assign(n,{[c]:e[c]});return o(n,...y)},r=(n,y={})=>e=>(n(y,e!=null?e:{}),Object.freeze(o({},y))),i=(n,...y)=>e=>{let c={};return y.forEach(f=>{c=o(c,f(e))}),n(c,e!=null?e:{}),Object.freeze(c)};export{i as extend,r as factory};
+//# sourceMappingURL=index.esm.js.map
