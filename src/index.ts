@@ -22,11 +22,11 @@ const merge = (target, ...sources) => {
 	return merge(target, ...sources)
 }
 
-export const factory = (cb: any) => {
-	const t = {}
+export const factory = (cb: any, { freeze = false } = {}) => {
 	return (args?: any) => {
+		const t = {}
 		cb(t, args ?? {})
-		return Object.freeze(Object.assign({}, t))
+		return freeze ? Object.freeze(t) : t
 	}
 }
 
@@ -37,6 +37,6 @@ export const extend = (cb: any, ...p: any) => {
 			_p = merge(_p, __p(args))
 		})
 		cb(_p, args ?? {})
-		return Object.freeze(Object.assign({}, _p))
+		return Object.freeze(_p)
 	}
 }
