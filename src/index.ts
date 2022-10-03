@@ -66,7 +66,6 @@ export const perfAsync = (cb: any, { log = true, name = 'Time' } = {}) => {
 export const memo = (cb: any) => {
 	const cache = new Map()
 	return (...args: any) => {
-		console.log(this)
 		const key = JSON.stringify(args)
 		if (cache.has(key)) return cache.get(key)
 		const v = cb(...args)
