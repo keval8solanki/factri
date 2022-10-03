@@ -11,11 +11,11 @@ It is small set for util functions
 Install factri with npm or yarn
 
 ```bash
-  npm i factri
-
-  yarn add factri
+npm i factri
 ```
-    
+```bash
+yarn add factri
+```
 ## Functions List
 
 
