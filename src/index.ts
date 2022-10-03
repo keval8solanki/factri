@@ -1,7 +1,7 @@
-const isObject = (item: any) => {
-	return item && typeof item === 'object' && !Array.isArray(item)
-}
-const merge = (target, ...sources) => {
+export const isObject = (item: any) =>
+	item && typeof item === 'object' && !Array.isArray(item)
+
+export const merge = (target: any, ...sources: any): any => {
 	if (!sources.length) return target
 	const source = sources.shift()
 	if (isObject(target) && isObject(source)) {
@@ -38,5 +38,50 @@ export const extend = (cb: any, ...p: any) => {
 		})
 		cb(_p, args ?? {})
 		return Object.freeze(_p)
+	}
+}
+
+export const perf = (cb: any, { log = true, name = 'Time' } = {}) => {
+	return (...args: any) => {
+		const start = performance.now()
+		const r = cb(...args)
+		const end = performance.now()
+		const ms = end - start
+		if (log) console.table({ [name]: `${ms}ms` })
+		return [ms, r]
+	}
+}
+
+export const perfAsync = (cb: any, { log = true, name = 'Time' } = {}) => {
+	return async (...args: any) => {
+		const start = performance.now()
+		const r = await cb(...args)
+		const end = performance.now()
+		const ms = end - start
+		if (log) console.table({ [name]: `${ms}ms` })
+		return [ms, r]
+	}
+}
+
+export const memo = (cb: any) => {
+	const cache = new Map()
+	return (...args: any) => {
+		console.log(this)
+		const key = JSON.stringify(args)
+		if (cache.has(key)) return cache.get(key)
+		const v = cb(...args)
+		cache.set(key, v)
+		return v
+	}
+}
+
+export const memoAsync = (cb: any) => {
+	const cache = new Map()
+	return async (...args: any) => {
+		const key = JSON.stringify(args)
+		if (cache.has(key)) return cache.get(key)
+		const v = await cb(...args)
+		cache.set(key, v)
+		return v
 	}
 }
