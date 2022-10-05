@@ -1,28 +1,45 @@
 import f from 'factri'
-const { extend, factory } = f
-console.log(f)
-const Human = factory((t, { name = 'Human' }) => {
-	t.walk = () => console.log('walking')
-	t.talk = () => console.log('talking')
-	t.sayName = () => console.log('My name is', name)
+const { extend2, factory } = f
+
+const A = factory((t) => {
+	let z = 100
+	t.a = () => console.log('a')
+	t.a2 = () => z--
+	t.a3 = () => z
+	t.o = () => (z = z + 10)
 })
 
-const h1 = Human()
-const h2 = Human()
+const B = factory((t) => {
+	let z = 101
+	t.b = () => console.log('b')
+	t.b2 = () => z--
+	t.b3 = () => z
+	t.o = () => (z = z + 20)
+})
 
-// console.table(h1)
+const C = factory((t) => {
+	let z = 102
+	t.c = () => console.log('c')
+	t.c2 = () => z--
+	t.c3 = () => z
+	t.o = () => (z = z + 30)
+})
 
-console.log(h1 === h2)
+const X = extend2(
+	(t) => {
+		let z = 103
+		t.x = () => console.log('c')
+		t.x2 = () => z--
+		t.x3 = () => z
+		t.o = () => (z = z + 40)
+	},
+	A,
+	B,
+	C
+)
 
-const Man = extend((t) => {
-	console.table(t)
-	t.work = () => console.log('working')
+const x = X()
 
-	console.log(t)
-}, Human)
-
-const man = Man({ name: 'Keval' })
-man.walk()
-man.talk()
-man.sayName()
-man.work()
+x.o()
+console.log(x.a3())
+console.log(x.x3())

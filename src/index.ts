@@ -1,26 +1,3 @@
-export const isObject = (item: any) =>
-	item && typeof item === 'object' && !Array.isArray(item)
-
-export const merge = (target: any, ...sources: any): any => {
-	if (!sources.length) return target
-	const source = sources.shift()
-	if (isObject(target) && isObject(source)) {
-		for (const key in source) {
-			if (isObject(source[key])) {
-				if (!target[key])
-					Object.assign(target, {
-						[key]: {},
-					})
-				merge(target[key], source[key])
-			} else {
-				Object.assign(target, {
-					[key]: source[key],
-				})
-			}
-		}
-	}
-	return merge(target, ...sources)
-}
 
 export const factory = (cb: any, { freeze = true } = {}) => {
 	return (args?: any) => {
@@ -30,14 +7,14 @@ export const factory = (cb: any, { freeze = true } = {}) => {
 	}
 }
 
-export const extend = (cb: any, ...p: any) => {
+export const extend = (cb: any, ...parents: any) => {
 	return (args?: any): any => {
-		let _p = {}
-		p.forEach((__p: any) => {
-			_p = merge(_p, __p(args))
+		let parentInstances = {}
+		parents.forEach((parent: any) => {
+			parentInstances = Object.assign(parentInstances, parent(args))
 		})
-		cb(_p, args ?? {})
-		return Object.freeze(_p)
+		cb(parentInstances, args ?? {})
+		return Object.freeze(parentInstances)
 	}
 }
 
